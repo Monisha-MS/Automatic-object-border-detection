@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
-
 
 # Importing libraries
 import cv2
@@ -27,10 +25,6 @@ cv2.imwrite("Cropped_image.jpg", cropped_image)
 cv2.waitKey(10000)
 cv2.destroyAllWindows()
 
-
-# In[4]:
-
-
 # bg_removal
 
 from rembg import remove
@@ -42,9 +36,6 @@ output_path = 'bg_removed.png'
 input = Image.open(input_path)
 output = remove(input)
 output.save(output_path)
-
-
-# In[6]:
 
 
 # contour
@@ -59,15 +50,9 @@ cv2.imwrite('overlay.jpg', overlay)
 #cv2.destroyAllWindows()
 
 
-# In[7]:
-
-
 # Displaying the coordinates where the overlay image should be placed on the original image
 x,y = coordinates
 # print(x,y)
-
-
-# In[8]:
 
 
 #overlaying
@@ -82,9 +67,6 @@ _, mask = cv2.threshold(gray, 10, 255, cv2.THRESH_BINARY_INV)
 background_img = cv2.bitwise_and(region_of_interest, region_of_interest, mask = mask)
 final_image = cv2.add(background_img, Overlay)
 resized_image[y: y+h1, x:x + w1] = final_image
-
-
-# In[12]:
 
 
 #Saving the border detected output
